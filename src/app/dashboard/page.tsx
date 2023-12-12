@@ -12,7 +12,7 @@ const Dashboard = () => {
         <h2 className="text-xl font-bold">Blogs</h2>
 
         <Link href={"/dashboard/blog/create"}>
-          <Button variant={"outline"} className="items-center  space-x-5">
+          <Button variant={"outline"} className="flex items-center gap-2">
             <PlusIcon className="mr-1" /> Create
           </Button>
         </Link>
