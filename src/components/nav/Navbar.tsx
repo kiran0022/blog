@@ -3,6 +3,7 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import { useUser } from "@/lib/users";
 import Profile from "./Profile";
+import Link from "next/link";
 
 const Navbar = () => {
   const { user } = useUser();
@@ -10,10 +11,12 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between">
-      <h2 className="group text-2xl">
-        Publish it!
-        <p className="h-1 w-0 bg-white transition-all group-hover:w-full"></p>
-      </h2>
+      <Link href={"/"}>
+        <h2 className="group text-2xl">
+          Publish it!
+          <p className="h-1 w-0 bg-white transition-all group-hover:w-full"></p>
+        </h2>
+      </Link>
       {/* <LoginForm /> */}
       {user?.id ? <Profile /> : <LoginForm />}
     </nav>

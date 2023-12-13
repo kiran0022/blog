@@ -20,7 +20,7 @@ const Navlink = () => {
     },
   ];
   return (
-    <div className="flex items-center gap-5 border-b pb-2">
+    <div className="mb-2 flex items-center gap-5 border-b pb-2">
       {links.map(({ href, text, Icon }, idx) => (
         <Link
           key={idx}
