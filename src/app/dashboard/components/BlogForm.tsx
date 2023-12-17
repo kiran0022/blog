@@ -32,11 +32,14 @@ import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import MarkdownPreview from "@/components/markdown/MarkdownPreview";
 import { BlogFormSchemaType, BlogFormSchema } from "../schema/index";
+import { IBlogDetail } from "@/lib/types";
 
 export default function BlogForm({
   onHandleSubmit,
+  blog,
 }: {
   onHandleSubmit: (data: BlogFormSchemaType) => void;
+  blog?: IBlogDetail;
 }) {
   const [isPreview, setIsPreview] = useState(false);
 
@@ -46,15 +49,17 @@ export default function BlogForm({
     mode: "all",
     resolver: zodResolver(BlogFormSchema),
     defaultValues: {
-      title: "",
-      image_url: "",
-      content: "",
-      isPremium: false,
-      isPublish: true,
+      title: blog?.title || "",
+      image_url: blog?.image_url || "",
+      content: blog?.blog_content?.content || "",
+      isPremium: blog?.isPremium || false,
+      isPublish: blog?.isPublish || false,
     },
   });
 
   function onSubmit(data: z.infer<typeof BlogFormSchema>) {
+    console.log(" form data", data);
+
     startTransition(() => onHandleSubmit(data));
   }
 
@@ -288,7 +293,7 @@ export default function BlogForm({
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        {/* <Button type="submit">Submit</Button> */}
       </form>
     </Form>
   );

@@ -12,8 +12,8 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between">
       <Link href={"/"}>
-        <h2 className="group text-2xl">
-          Publish it!
+        <h2 className="group text-3xl font-bold">
+          No idea?
           <p className="h-1 w-0 bg-white transition-all group-hover:w-full"></p>
         </h2>
       </Link>

@@ -47,7 +47,7 @@ const Profile = () => {
         />
       </PopoverTrigger>
 
-      <PopoverContent className="mt-1 space-y-2 divide-y rounded-lg bg-black/50 text-base ">
+      <PopoverContent className="z-10 mt-1 space-y-2 divide-y rounded-lg bg-black text-base ">
         <div className="p-4 ">
           <p className="text-slate-50">{userDetails?.full_name}</p>
           <p className="text-xs text-gray-400"> {userDetails?.email}</p>

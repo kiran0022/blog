@@ -1,0 +1,66 @@
+1:46:54 --> learn markdown, rehype, hightlight, react markdown...  and make the copybutton component error to tostify notification rather than logging the errir
+
+1.59.50 --> answer for -> why created seprate table for blog contents
+
+2.00.00 --> generating type from supabase to vscode with login access token (google it for more)
+            https://supabase.com/docs/guides/api/rest/generating-types
+
+2.12.30 --> either can be users table auth table [supabase dashboard rls policy doubt]
+
+2.34.16 --> why bind method with the function
+
+2.41.35 --> eror while edit blog is clicked redirected with the dynamic route from blog.ts (the url seems to be ok problem with something)
+            Server Error 
+            Error: Invariant: cookies() expects to have requestAsyncStorage, none available.
+            src\lib\actions\blog.ts (9:27) @ cookies
+
+                     7 | import { revalidatePath } from 'next/cache'
+                     8 |
+                  >  9 | const cookieStore = cookies()
+                     |                           ^
+                  10 |
+                  11 | const DASHBOARD = "/dashboard"
+                  12 | const supabase = createServerClient<Database>(
+         
+         **** solution 2.42.48 -> call the supabase function for every time ****                 
+
+
+2.54.50 --> policy missing occured serveral stages check it 
+
+3.05.19 --> no error but the blogtable that lists the total blogs was invisible because we are using the readBlog()->blog.ts same function for both the views pov blog page and out dashboard blogs lists
+                  solution- creating another function serpatelly to avoid that mistake 3.07.19
+
+3.08.14 --> supabase function creation for the read only policy update
+
+ const { ["content"]:excludedKey, ...blog} = data
+    what is excludedKey in this also this is similar to const{content, ...blog} = data -> which is omiting the content data and using the remaining
+
+3.22.20 --> isr strategy maybe for revalidate through the api
+
+3.24.00 --> Feauture not working ( not published should be able to visible through the view button in the dashboard but its redirected )
+
+3.30.50 --> supabase dashboard change for the blog content protected security
+
+
+
+
+
+
+
+
+
+
+
+NEED TO LEARN ==>
+ 
+$ learn how different from the mongodb to fetch data from the database 
+   just like triggering when its triggered the value is storing in the database hwo that works in supabase
+      know the supabasework flow how to write function and triigers why are that beem used 
+
+
+$ check bg radient effect in config  or globalcss
+
+
+publish trigger functino not working
+when it is called something anonyms happens like while creating blog the  "column ispublish not found error" occurs also the entire part of the blog liist is not rendered
+ --> fixed this in glitch way like insted of this is_publish() or is_admin() i used like  is_admin() or is_publish()  

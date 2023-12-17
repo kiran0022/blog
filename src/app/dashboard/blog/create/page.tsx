@@ -1,50 +1,34 @@
-import { Button } from "@/components/ui/button";
-import {
-  DownloadIcon,
-  EyeOpenIcon,
-  Link1Icon,
-  RocketIcon,
-  StarIcon,
-} from "@radix-ui/react-icons";
+"use client";
 import React from "react";
+import BlogForm from "../../components/BlogForm";
+import { BlogFormSchemaType } from "../../schema";
+import { toast } from "@/components/ui/use-toast";
+import { createBlog } from "@/lib/actions/blog";
+import { useRouter } from "next/navigation";
 
-const CreateBlog = () => {
-  return (
-    <div className="rounded-md border p-2">
-      <div className="flex justify-between border-b py-2">
-        <div className="flex gap-3">
-          <Button variant={"ghost"} className="flex gap-1">
-            {" "}
-            <EyeOpenIcon /> Preview{" "}
-          </Button>
-          <Button variant={"ghost"} className="flex gap-1">
-            {" "}
-            <StarIcon /> Premium{" "}
-          </Button>
-          <Button variant={"ghost"} className="flex gap-1">
-            {" "}
-            <RocketIcon /> Publish{" "}
-          </Button>
-        </div>
-        <div>
-          <Button variant={"outline"} className="flex gap-1">
-            {" "}
-            <DownloadIcon /> Save{" "}
-          </Button>
-        </div>
-      </div>
-      <div>
-        <h3>Blog title</h3>
+export default function Page() {
+  const router = useRouter();
 
-        <div>
-          <Link1Icon />
-          <label id={"image_url"}>Image url</label>
-          <input type="text" />
-        </div>
-        <textarea name="content" id="content" cols={30} rows={10}></textarea>
-      </div>
-    </div>
-  );
-};
+  const handleCreate = async (data: BlogFormSchemaType) => {
+    const result = await createBlog(data);
+    const { error } = await JSON.parse(result);
 
-export default CreateBlog;
+    if (error?.message) {
+      toast({
+        title: "Failed to create blog",
+        description: (
+          <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+            <code className="text-white">{error.message}</code>
+          </pre>
+        ),
+      });
+    } else {
+      toast({
+        title: "Successfully created " + data.title,
+      });
+    }
+
+    router.push("/dashboard");
+  };
+  return <BlogForm onHandleSubmit={handleCreate} />;
+}

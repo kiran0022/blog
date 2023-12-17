@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { readBlog } from "@/lib/actions/blog";
-
+import { readBlogAdmin, updateBlogById } from "@/lib/actions/blog";
 import {
   EyeOpenIcon,
   Pencil1Icon,
@@ -11,9 +10,12 @@ import {
 import { EyeIcon } from "lucide-react";
 import React from "react";
 import DeleteAlert from "./DeleteAlert";
+import SwitchForm from "./SwitchForm";
+import { BlogFormSchemaType } from "../schema";
+import Link from "next/link";
 
 const BlogTable = async () => {
-  const { data: blogs } = await readBlog();
+  const { data: blogs } = await readBlogAdmin();
 
   return (
     <div className="overflow-auto">
@@ -23,17 +25,33 @@ const BlogTable = async () => {
           <h3>Premium</h3>
           <h3>Publish</h3>
         </div>
-        {blogs?.map((blog, _idx) => (
-          <div key={_idx} className=" grid grid-cols-6 items-center p-5">
-            <h3 className="col-span-2"> {blog.title}</h3>
-            <Switch checked={blog.is_premium} />
-            <Switch checked={blog.is_publish} />
+        {blogs?.map((blog, _idx) => {
+          const updatePremium = updateBlogById.bind(null, blog.id, {
+            isPremium: !blog.isPremium,
+          } as BlogFormSchemaType);
+          const updatePublish = updateBlogById.bind(null, blog.id, {
+            isPublish: !blog.isPublish,
+          } as BlogFormSchemaType);
+          return (
+            <div key={_idx} className=" grid grid-cols-6 items-center p-5">
+              <h3 className="col-span-2 overflow-clip"> {blog.title}</h3>
+              <SwitchForm
+                checked={blog.isPremium}
+                onToggle={updatePremium}
+                name={"Premium"}
+              />
+              <SwitchForm
+                checked={blog.isPublish}
+                onToggle={updatePublish}
+                name={"Publish"}
+              />
 
-            <div className="col-span-2">
-              <Actions id={blog.id} />
+              <div className="col-span-2">
+                <Actions id={blog.id} />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -44,15 +62,17 @@ export default BlogTable;
 const Actions = ({ id }: { id: string }) => {
   return (
     <div className="flex flex-row flex-wrap gap-3">
-      <Button variant={"outline"} className="flex gap-1">
-        <EyeOpenIcon /> View
-      </Button>
+      <Link href={"/blog/" + id}>
+        <Button variant={"outline"} className="flex gap-1">
+          <EyeOpenIcon /> View
+        </Button>
+      </Link>
       <DeleteAlert blogId={id} />
-      <Button variant={"outline"} className="flex gap-1">
-        <Pencil1Icon /> Edit
-      </Button>
+      <Link href={"/dashboard/blog/edit/" + id}>
+        <Button variant={"outline"} className="flex gap-1">
+          <Pencil1Icon /> Edit
+        </Button>
+      </Link>
     </div>
   );
 };
-
-
