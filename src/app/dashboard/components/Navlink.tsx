@@ -26,7 +26,8 @@ const Navlink = () => {
           key={idx}
           href={href}
           className={cn("flex items-center gap-1 hover:underline", {
-            "rounded-md  text-green-500 underline": pathname === href,
+            "rounded-md font-semibold text-violet-500 underline":
+              pathname === href,
           })}
         >
           <Icon />/{text}

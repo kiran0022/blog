@@ -140,13 +140,15 @@ export default function BlogForm({
           <Button
             variant={"default"}
             disabled={!form.formState.isValid}
-            className={cn("flex items-center gap-1 ", {
-              "animate-spin": isPending,
-            })}
+            className={cn(
+              "group flex items-center gap-2 rounded-md bg-zinc-800 px-3  py-2 text-sm transition-all disabled:border-gray-800 disabled:bg-gray-900",
+              {
+                "animate-pulse": isPending,
+              },
+            )}
             // className={cn("mt-0", { "mt-2": window.screen.width <= 523 })}
           >
             <Bookmark className="p-1" />
-            Save
           </Button>
         </div>
 

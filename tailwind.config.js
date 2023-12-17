@@ -20,6 +20,10 @@ module.exports = {
         "graident-dark":
           "radial-gradient(76.33% 76.59% at 50.15% 6.06%, #1A1A1A 0%, rgba(26, 26, 26, 0.38) 100%)",
       },
+      textColor: {
+        "graident-purple":
+          "radial-gradient(76.33% 76.59% at 50.15% 6.06%, #B52DF5 0%, rgb(138, 43, 226) 100%)",
+      },
       height: {
         "70vh": "70vh",
       },

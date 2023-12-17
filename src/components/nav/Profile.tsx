@@ -43,7 +43,7 @@ const Profile = () => {
           alt={userDetails?.full_name}
           width={500}
           height={500}
-          className=" h-8 w-8 rounded-full ring-2 ring-zinc-900"
+          className=" h-10 w-10 rounded-full ring-2 ring-violet-600"
         />
       </PopoverTrigger>
 
