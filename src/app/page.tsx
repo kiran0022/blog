@@ -9,7 +9,7 @@ export default async function Home() {
       {blogs?.map((blog, _idx) => {
         return (
           <Link
-            href={"blog/" + blog.id}
+            href={process.env.SITE_URL + "/blog/" + blog.id}
             key={_idx}
             className="w-full cursor-pointer space-y-4 rounded-md border bg-graident-dark p-5 ring-purple-500 transition-all hover:ring-2 first:md:col-span-3 first:lg:col-span-2"
           >
