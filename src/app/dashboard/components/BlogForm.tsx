@@ -148,7 +148,7 @@ export default function BlogForm({
             )}
             // className={cn("mt-0", { "mt-2": window.screen.width <= 523 })}
           >
-            <Bookmark className="p-1" />
+            <Bookmark className="p-1" /> save
           </Button>
         </div>
 
