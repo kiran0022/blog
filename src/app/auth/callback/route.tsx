@@ -7,7 +7,9 @@ export async function GET(request: Request) {
   const code = searchParams.get("code");
   // if "next" is in param, use it as the redirect URL
   const next = searchParams.get("next") ?? "/";
-
+console.log('====================================');
+console.log(searchParams, origin, next);
+console.log('====================================');
   if (code) {
     const cookieStore = cookies();
     const supabase = createServerClient(
