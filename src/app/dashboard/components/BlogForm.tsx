@@ -58,7 +58,7 @@ export default function BlogForm({
   });
 
   function onSubmit(data: z.infer<typeof BlogFormSchema>) {
-    console.log(" form data", data);
+    // console.log(" form data", data);
 
     startTransition(() => onHandleSubmit(data));
   }

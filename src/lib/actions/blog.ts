@@ -19,8 +19,8 @@ export async function createBlog(data: BlogFormSchemaType) {
 
     const { ["content"]: excludedKey, ...blog } = data
     const resultBlog = await supabase.from("blog").insert(blog).select('id').single()
-    console.log("data", data);
-    console.log("resultl", resultBlog);
+    // console.log("data", data);
+    // console.log("resultl", resultBlog);
 
     if (resultBlog.error) {
         return JSON.stringify(resultBlog)
@@ -57,7 +57,7 @@ export async function updateBlogById(blogId: string, data: BlogFormSchemaType) {
     const supabase = await createSupabaseServerClient()
 
     const result = await supabase.from("blog").update(data).eq("id", blogId)
-    console.log("/blog/" + blogId);
+    // console.log("/blog/" + blogId);
 
     revalidatePath("/blog/" + blogId)
     revalidatePath(DASHBOARD)

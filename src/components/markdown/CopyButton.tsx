@@ -12,7 +12,7 @@ export default function CopyButton({ id }: { id: string }) {
     try {
       await navigator.clipboard.writeText(text!);
     } catch (error) {
-      console.log("error copy");
+      console.error("error copy");
     }
   };
   return (

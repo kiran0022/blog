@@ -19,7 +19,7 @@ const LoginForm = () => {
         redirectTo: location.origin + "/auth/callback?next=" + pathname,
       },
     });
-    console.log("location origin log ", location.origin);
+    // console.log("location origin log ", location.origin);
   };
 
   return (

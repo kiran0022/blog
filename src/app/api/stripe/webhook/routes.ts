@@ -22,13 +22,13 @@ export async function POST(request: any) {
     switch (event.type) {
         case 'payment_intent.succeeded':
             const paymentIntentSucceeded = event.data.object;
-            console.log(paymentIntentSucceeded);
+            // console.log(paymentIntentSucceeded);
 
             // Then define and call a function to handle the event payment_intent.succeeded
             break;
         // ... handle other event types
         default:
-            console.log(`Unhandled event type ${event.type}`);
+            console.error(`Unhandled event type ${event.type}`);
     }
 
     return Response.json({})
