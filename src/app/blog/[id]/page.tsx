@@ -4,13 +4,13 @@ import Image from "next/image";
 import BlogContent from "./components/BlogContent";
 export default async function page({ params }: { params: { id: string } }) {
   // const { data } = await (
-  //   await fetch(process.env.SITE_URL + "/api/blog/?id=" + params.id)
+  //   await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/api/blog/?id=" + params.id)
   // ).json();
 
   // const blog: IBlog = data;
 
   const { data: blog } = (await fetch(
-    process.env.SITE_URL + "/api/blog/?id=" + params.id,
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/blog/?id=" + params.id,
   ).then((data) => data.json())) as { data: IBlog };
 
   console.log(blog?.id);

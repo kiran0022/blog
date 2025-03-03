@@ -31,6 +31,8 @@ console.log('====================================');
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
+      console.log("log before redirect",`${origin}${next}` );
+      debugger;
       return NextResponse.redirect(`${origin}${next}`);
     }
   }
