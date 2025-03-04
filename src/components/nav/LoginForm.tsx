@@ -16,7 +16,7 @@ const LoginForm = () => {
     supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: location.origin + "/auth/callback?next=" + pathname,
+        redirectTo:  `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback?next=${pathname}`,
       },
     });
     console.log("location origin login ", location.origin);
